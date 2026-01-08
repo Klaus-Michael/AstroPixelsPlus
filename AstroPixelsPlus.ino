@@ -115,6 +115,7 @@
 #include "dome/TeecesLogics.h"
 #include "body/DataPanel.h"
 #include "body/ChargeBayIndicator.h"
+#include "CustomAstroPixel.h"
 
 #ifdef USE_I2C_ADDRESS
 #include "i2c/I2CReceiver.h"
@@ -216,13 +217,13 @@ LogicEngineCurvedRLD<PIN_REAR_LOGIC, PIN_REAR_LOGIC_CLOCK> RLD(LogicEngineRLDDef
 #elif defined(USE_RSERIES_RLD)
 LogicEngineDeathStarRLD<PIN_REAR_LOGIC> RLD(LogicEngineRLDDefault, 3);
 #else
-AstroPixelRLD<PIN_REAR_LOGIC> RLD(LogicEngineRLDDefault, 3);
+CustomAstroPixelRLD<PIN_REAR_LOGIC> RLD(LogicEngineRLDDefault, 3);
 #endif
 
 #ifdef USE_RSERIES_FLD
 LogicEngineDeathStarFLD<PIN_FRONT_LOGIC> FLD(LogicEngineFLDDefault, 1);
 #else
-AstroPixelFLD<PIN_FRONT_LOGIC> FLD(LogicEngineFLDDefault, 1);
+CustomAstroPixelFLD<PIN_FRONT_LOGIC> FLD(LogicEngineFLDDefault, 1);
 #endif
 
 AstroPixelFrontPSI<PIN_FRONT_PSI> frontPSI(LogicEngineFrontPSIDefault, 4);
