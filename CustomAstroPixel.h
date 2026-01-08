@@ -49,3 +49,47 @@ public:
 
 template <uint8_t DATA_PIN = REAR_LOGIC_PIN>
 using CustomAstroPixelRLD = LogicEngineDisplay<CustomAstroPixelRLDPCB0<DATA_PIN>, LogicRenderGlyph4Pt<LogicStaggerType::kNone>>;
+
+template <uint8_t DATA_PIN = FRONT_PSI_PIN>
+class CustomAstroPixelFrontPSIPCB : public FastLEDPCB<WS2812B, DATA_PIN, 25, 0, 25, 5, 5>
+{
+public:
+    static inline const byte* getLEDMap()
+    {
+        // Custom map for AstroPixel front PSI (user-adjustable)
+        static const byte sLEDmap[] PROGMEM =
+        {
+            31, 31, 31, 31, 31,
+            31,  2,  3, 31, 31,
+            31,  1,  0,  4, 31,
+            31,  6,  5, 31, 31,
+            31, 31, 31, 31, 31,
+        };
+        return sLEDmap;
+    }
+};
+
+template <uint8_t DATA_PIN = FRONT_PSI_PIN>
+using CustomAstroPixelFrontPSI = LogicEngineDisplay<CustomAstroPixelFrontPSIPCB<DATA_PIN>, LogicRenderGlyph5Pt, LogicEngineDefaults::PSICOLORWIPE>;
+
+template <uint8_t DATA_PIN = REAR_PSI_PIN>
+class CustomAstroPixelRearPSIPCB : public FastLEDPCB<WS2812B, DATA_PIN, 25, 0, 25, 5, 5>
+{
+public:
+    static inline const byte* getLEDMap()
+    {
+        // Custom map for AstroPixel rear PSI (user-adjustable)
+        static const byte sLEDmap[] PROGMEM =
+        {
+            31, 31, 31, 31, 31,
+            31,  2,  3, 31, 31,
+            31,  1,  0,  4, 31,
+            31,  6,  5, 31, 31,
+            31, 31, 31, 31, 31,
+        };
+        return sLEDmap;
+    }
+};
+
+template <uint8_t DATA_PIN = REAR_PSI_PIN>
+using CustomAstroPixelRearPSI = LogicEngineDisplay<CustomAstroPixelRearPSIPCB<DATA_PIN>, LogicRenderGlyph5Pt, LogicEngineDefaults::PSICOLORWIPE>;
