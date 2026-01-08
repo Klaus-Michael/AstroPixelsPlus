@@ -17,6 +17,7 @@ enum
 
 WMenuData mainMenu[] = {
     { "Logics", "/logics" },
+    { "Holos", "/holos" },
     { "Setup", "/setup" }
 };
 
@@ -37,6 +38,42 @@ WElement mainContents[] = {
 
 WElement setupContents[] = {
     WVerticalMenu("setup", setupMenu, SizeOfArray(setupMenu)),
+    rseriesSVG
+};
+
+WElement holosContents[] = {
+    W1("Holo Projectors"),
+    WLabel("Front Holo", "frontlabel"),
+    WHorizontalAlign(),
+    WButton("Front On", "fronton", []() { CommandEvent::process(F("HPF0040")); }),
+    WButton("Front Off", "frontoff", []() { CommandEvent::process(F("HPF0000")); }),
+    WHorizontalAlign(),
+    WButton("Front Pulse", "frontpulse", []() { CommandEvent::process(F("HPF0030")); }),
+    WButton("Front Rainbow", "frontrainbow", []() { CommandEvent::process(F("HPF006")); }),
+    WVerticalAlign(),
+    WLabel("Rear Holo", "rearlabel"),
+    WHorizontalAlign(),
+    WButton("Rear On", "rearon", []() { CommandEvent::process(F("HPR0040")); }),
+    WButton("Rear Off", "rearoff", []() { CommandEvent::process(F("HPR0000")); }),
+    WHorizontalAlign(),
+    WButton("Rear Pulse", "rearpulse", []() { CommandEvent::process(F("HPR0030")); }),
+    WButton("Rear Rainbow", "rearrainbow", []() { CommandEvent::process(F("HPR006")); }),
+    WVerticalAlign(),
+    WLabel("Top Holo", "toplabel"),
+    WHorizontalAlign(),
+    WButton("Top On", "topon", []() { CommandEvent::process(F("HPT0040")); }),
+    WButton("Top Off", "topoff", []() { CommandEvent::process(F("HPT0000")); }),
+    WHorizontalAlign(),
+    WButton("Top Pulse", "toppulse", []() { CommandEvent::process(F("HPT0030")); }),
+    WButton("Top Rainbow", "toprainbow", []() { CommandEvent::process(F("HPT006")); }),
+    WVerticalAlign(),
+    WLabel("Restore Defaults", "defaultlabel"),
+    WHorizontalAlign(),
+    WButton("Reset Holos", "reset", []() { CommandEvent::process(F("HPA0000")); }),
+    WHorizontalAlign(),
+    WButton("Back", "back", "/"),
+    WHorizontalAlign(),
+    WButton("Home", "home", "/"),
     rseriesSVG
 };
 
@@ -402,6 +439,7 @@ WElement firmwareContents[] = {
 
 WPage pages[] = {
     WPage("/", mainContents, SizeOfArray(mainContents)),
+            WPage("/holos", holosContents, SizeOfArray(holosContents)),
       WPage("/logics", logicsContents, SizeOfArray(logicsContents)),
     WPage("/setup", setupContents, SizeOfArray(setupContents)),
       WPage("/serial", serialContents, SizeOfArray(serialContents)),
