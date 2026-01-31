@@ -41,7 +41,8 @@ public:
             37,36,35,34,33,32,
             45,44,43,42,41,40,
             53,52,51,50,49,48,
-            61,60,59,58,57,56            
+            61,60,59,58,57,56  
+            ,6,7,14,15,22,23,30,31,38,39,46,47,54,55  //this last line are the unused pins, this is requiered to get a smooth animations without white flashes 
         };
         return sLEDmap;
     }
@@ -51,7 +52,7 @@ template <uint8_t DATA_PIN = FRONT_LOGIC_PIN>
 using CustomAstroPixelFLD = LogicEngineDisplay<CustomAstroPixelFLDPCB0<DATA_PIN>, LogicRenderGlyph5Pt>;
 
 template <uint8_t DATA_PIN = REAR_LOGIC_PIN>
-class CustomAstroPixelRLDPCB0 : public FastLEDPCB<WS2812B, DATA_PIN, 64, 0, 64, 16, 4>
+class CustomAstroPixelRLDPCB0 : public FastLEDPCB<WS2812B, DATA_PIN, 64, 0, 64, 17, 3>
 {
 public:
     static inline const byte* getLEDMap()
@@ -59,10 +60,20 @@ public:
         // Custom map for AstroPixel RLD (user-adjustable)
         static const byte sLEDmap[] PROGMEM =
         {
-             0, 1, 2, 3, 4, 5, 6, 7,32,33,34,35,36,37,38,39,            
-             8, 9,10,11,12,13,14,15,40,41,42,43,44,45,46,47,
-            16,17,18,19,20,21,22,23,48,49,50,51,52,53,54,55,
-            24,25,26,27,28,29,30,31,56,57,58,59,60,61,62,63       
+            //  7,31,6,30,5,29,4,28,44,3,27,2,26,1,25,0,32,
+            //  15,39,14,38,13,37,12,36,53,11,35,10,34,9,41,8,40,
+            //  23,47,22,46,21,54,20,45,52,19,43,18,42,17,49,16,48    
+
+            7,31,6,30,5,29,4,28,44,3,27,2,26,1,25,0,32,
+            15,39,14,38,13,37,12,36,53,11,35,10,34,9,41,8,40,
+            23,47,22,46,21,54,20,45,52,19,43,18,42,17,49,16,48,
+            24,33,50,51,55,56,57,58,59,60,61,62,63   //this last line are the unused pins, this is requiered to get a smooth animations without white flashes 
+
+
+            // 0, 1, 2, 3, 4, 5, 6, 7,32,33,34,35,36,37,38,39,            
+            //  8, 9,10,11,12,13,14,15,40,41,42,43,44,45,46,47,
+            // 16,17,18,19,20,21,22,23,48,49,50,51,52,53,54,55,
+            // 24,25,26,27,28,29,30,31,56,57,58,59,60,61,62,63  
         };
         return sLEDmap;
     }
