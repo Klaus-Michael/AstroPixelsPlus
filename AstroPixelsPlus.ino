@@ -777,6 +777,7 @@ void setup()
                                                     {
                 printf("cmd: %s\n", cmd);
                 Marcduino::processCommand(player, cmd);
+                CommandEvent::process(cmd);  // Process HP commands and other CommandEvent-based devices
                 if (preferences.getBool(PREFERENCE_MARCWIFI_SERIAL_PASS, MARC_WIFI_SERIAL_PASS))
                 {
                     COMMAND_SERIAL.print(cmd); COMMAND_SERIAL.print('\r');
